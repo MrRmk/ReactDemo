@@ -1,0 +1,48 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello React</title>
+        <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+        <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+        <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+        <style type="text/css">
+            #container {
+                padding: 50px;
+                background-color: #EEE;
+            }
+
+            #container h1 {
+                font-size: 144px;
+                font-family: sans-serif;
+                color: #0080a8;
+
+            }
+        </style>
+    </head>
+    <body>
+        <!-- JSX挂载的父节点 -->
+        <div id="container"></div>
+        <script type="text/babel">
+            // 挂载点
+            var destination = document.querySelector("#container");
+
+            // ReactDOM.render(
+            //     <div>
+            //         <h1>I am Tyler</h1>   
+            //     </div>,
+            //     document.body
+            // )
+
+            // React的render中两个元素,用逗号分隔。
+            // 第一个元素：是JSX,JSX在浏览器加载的时候转换成createElement对象，再转换成DOM对象替换浏览器中的DOM结构而做到更新页面
+            // 第二个元素：是第一个元素中的DOM元素所挂载的父节点
+            ReactDOM.render(
+                <div>
+                    <h1>I am Tyler</h1>   
+                </div>,
+                destination
+            )
+
+        </script>
+    </body>
+</html>

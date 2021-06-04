@@ -1,0 +1,122 @@
+<!-- 
+    组件的生命周期：
+
+    componentWillMount
+
+    componentDidMount
+
+    componentWillUnmount
+
+    componentWillUpdate
+
+    componentDidUpdate
+
+    shouldComponentUpdate
+
+    componentWillReceiveProps
+
+ -->
+<!DOCTYPE html>
+ <html>
+ <head>
+    <meta charset="utf-8">
+    <title>Component life circle</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    <style type="text/css">
+        #container {
+            padding: 50px;
+            background-color: #FFF;
+        }
+    </style>
+ </head>
+ <body>
+     <div id="container"></div>
+     <script type="text/babel">
+        var destination = document.querySelector("#container");
+        
+        var Counter = React.createClass({
+            render: function(){
+                var textStyle = {
+                    fontSize: 72,
+                    fontFamily: "sans-serif",
+                    color: "#333",
+                    fontWeight: "bold"
+                };
+                return (
+                    <div style={textStyle}>
+                        {this.props.display}
+                    </div>
+                )
+            }
+        })
+
+        var CounterParent = React.createClass({
+
+            // 函数getDefaultProps：在组件加载前被调用
+            getDefaultProps : function(){
+                console.log("getDefaultProps: receive props from outsize");
+                return {};//返回一个空的对象，这个对象实际上对应的是这个组件的props对象（this.props;）。
+            },
+
+            getInitialState: function(){
+                console.log("getInitialState: set default state of object");
+                return {//返回一个空的对象，这个对象实际上对应的是这个组件的state对象（this.state;）。
+                    count: 0
+                };
+            },
+
+            //在组件CounterParent要挂载到container节点之前，就会先调用componentWillMount
+            // 调用之后，react框架会将这个组件对象CounterParent挂载到container节点上。
+            componentWillMount: function() {
+                console.log("componentWillMount: component will about to mount");
+                return;
+            },
+
+            // 当节点CounterParent被加载到指定的dom节点container之后，执行的函数
+            // 该函数之后，这个组件对象已经被成功的加载到页面里面去了。
+            componentDidMount: function(){
+                console.log("componentDidMount: component is just mount");
+                return;
+            },
+
+            increase:function(){
+                this.setState({
+                    count: this.state.count + 1
+                });
+            },
+
+            shouldComponentUpdate: function(){
+                console.log("shouldComponentUpdate: function");
+            },
+
+            render: function(){
+                var backgroundStyle = {
+                    padding: 50,
+                    border: "#333 2px dotted",
+                    width: 250,
+                    height: 100,
+                    borderRadius: 10,
+                    textAlign: "center"
+                };
+                return (
+                    <div style={backgroundStyle}>
+                         <Counter display={this.state.count} />
+                        <button onClick={this.increase}>
+                            +
+                        </button>
+                    </div>
+                );
+            }
+        })
+
+        ReactDOM.render(
+            <div>
+                <CounterParent/>
+            </div>,
+            destination
+        );
+     </script>
+ </body>
+ </html>

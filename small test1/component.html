@@ -1,0 +1,50 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello React</title>
+        <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+        <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+        <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+        <style type="text/css">
+            #container {
+                padding: 50px;
+                background-color: #EEE;
+            }
+
+            #container h1 {
+                font-size: 144px;
+                font-family: sans-serif;
+                color: #0080a8;
+
+            }
+        </style>
+    </head>
+    <body>
+        <!-- JSX挂载的父节点 -->
+        <div id="container"></div>
+        <script type="text/babel">
+            // 挂载点
+            var destination = document.querySelector("#container");
+            var HelloWorld = React.createClass({
+                render: function() {
+                    return (
+                        <div>
+                            <p>Hello, {this.props.greetTarget}</p>
+                        </div>
+                    )
+                }
+            })
+
+            ReactDOM.render(
+                <div>
+                    <HelloWorld greetTarget="Tyler"/>
+                    <HelloWorld greetTarget="Nancy"/>
+                    <HelloWorld greetTarget="Jacket"/>
+                </div>
+                ,
+                destination
+            )
+
+        </script>
+    </body>
+</html>

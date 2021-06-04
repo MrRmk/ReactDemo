@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<!-- 声明两个事件：点击事件和input事件 -->
+<body>
+	<div id="container"></div>
+	<script type="text/babel">
+		class TestClickComponent extends React.Component{
+			render(){
+				return (
+					<div>
+						<button>显示|隐藏</button>
+						<span>测试点击</span>
+					</div>
+				);
+			}
+		}
+
+		class TestInputComponent extends React.Component{
+			// constructor() {
+			// 	this.setStatus({
+			// 		inputContent: ''
+			// 	});
+				
+			}
+			getInitialState: function(){
+				return {
+					inputContent: ''
+				}
+			}
+			render(){
+				return (
+					<div>
+						<input type="text" />
+						<span>{this.state.inputContent}</span>
+					</div>
+				);
+			}
+
+		}
+
+		ReactDOM.render(
+			<div>
+				<TestClickComponent/>
+				<TestInputComponent/>
+			</div>, document.getElementById('container'))
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello React</title>
+        <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+        <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+        <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+        <style type="text/css">
+            #container {
+                padding: 50px;
+                background-color: #FFF;
+            }
+
+        </style>
+    </head>
+    <body>
+        <!-- JSX挂载的父节点 -->
+        <div id="container"></div>
+        <script type="text/babel">
+            // 挂载点
+            var destination = document.querySelector("#container");
+            var Letter = React.createClass({
+                
+                render: function() {
+                    var letterStyle = {
+                        padding: 10,
+                        margin: 10,
+                        backgroundColor: this.props.bgColor,
+                        color: "#333",
+                        display: "inline-block",
+                        fontFamily: "monospace",
+                        fontSize: 32,
+                        textAlign: "center"
+                    };
+
+                    return (
+                        <div style={letterStyle}>
+                            {this.props.children}
+                        </div>
+                    );
+                }
+            });
+
+            ReactDOM.render(
+                <div>
+                    <Letter bgColor="#58B3FF">T</Letter>
+                    <Letter bgColor="#FF605F">Y</Letter>
+                    <Letter bgColor="#FFD52E">L</Letter>
+                    <Letter bgColor="#49DD8E">E</Letter>
+                    <Letter bgColor="#AE99FF">R</Letter>
+                </div>
+                ,
+                destination
+            )
+
+        </script>
+    </body>
+</html>
